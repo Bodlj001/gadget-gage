@@ -9,12 +9,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
   </head>
 
-  <body>
+  <body class="h-screen bg-gradient-to-b from-green-200 to-green-500">
     <header>
       <%= render "layouts/nav/public"%>
     </header>
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
