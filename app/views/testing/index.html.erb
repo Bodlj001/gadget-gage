@@ -1,0 +1,80 @@
+<h1 class="pt-20"> Testing </h1>
+<% 
+
+    # system details mac <------------------------->
+    @Hardware_Overview = `system_profiler SPHardwareDataType`
+    delimiters = ['  ', ': ']
+    @Hardware_Overview_array = @Hardware_Overview.split(Regexp.union(delimiters))
+
+    @NoEmptyHardware_Overview_array = @Hardware_Overview_array.reject { |c| c.empty? }
+
+    i = 1
+    while i < @NoEmptyHardware_Overview_array.count
+        puts @NoEmptyHardware_Overview_array[i]
+        i = i + 1
+    end
+
+    @Model_Name = @NoEmptyHardware_Overview_array[3]
+    @Model_Identifier = @NoEmptyHardware_Overview_array[5]
+    @Model_Number = @NoEmptyHardware_Overview_array[7]
+    @Chip = @NoEmptyHardware_Overview_array[9]
+    @Total_Number_of_Cores = @NoEmptyHardware_Overview_array[11]
+    @Memory = @NoEmptyHardware_Overview_array[13]
+    @System_Firmware_Version = @NoEmptyHardware_Overview_array[15]
+    @OS_Loader_Version = @NoEmptyHardware_Overview_array[17]
+    @Serial_Number_system = @NoEmptyHardware_Overview_array[19]
+    @Hardware_UUID = @NoEmptyHardware_Overview_array[21]
+    @Provisioning_UDID = @NoEmptyHardware_Overview_array[23]
+    @Activation_Lock_Status = @NoEmptyHardware_Overview_array[25]
+
+    puts @Chip
+
+
+
+    # Battery health mac <------------------------->
+
+    @batteryOriginalCap = `ioreg -l | grep DesignCapacity`
+    @batteryRawCap = `ioreg -l | grep AppleRawMaxCapacity`
+
+    @brc = @batteryRawCap.split(',')
+    # puts @brc
+    @brc_length = @brc.length()
+    # puts @brc_length
+    @cleaning_item2 = @brc[(@brc_length - 1)]
+    # puts @cleaning_item2
+    @final_array2 = @cleaning_item2.split(' ')
+    # puts @final_array2
+    @final_array_length2 = @final_array2.length()
+    # puts @final_array_length2
+    @batteryRawCap2 = @final_array2[(@final_array_length2 - 1)]
+    puts @batteryRawCap2
+
+
+    @boc = @batteryOriginalCap.split(',')
+    # puts @boc
+    @boc_length = @boc.length()
+    # puts @boc_length
+    @cleaning_item = @boc[(@boc_length - 1)]
+    # puts @cleaning_item
+    @final_array = @cleaning_item.split(' ')
+    # puts @final_array
+    @final_array_length = @final_array.length()
+    # puts @final_array_length
+    @batteryOriginalCap2 = @final_array[(@final_array_length - 1)]
+    puts @batteryOriginalCap2
+
+
+    @battery_health = ( @batteryRawCap2.to_f / @batteryOriginalCap2.to_f)
+
+    puts @battery_health.to_f.round(2)
+
+    # puts @battery_health
+
+    # DesignCapacity
+    # AppleRawMaxCapacity
+    # MaxCapacity
+ 
+
+ 
+ %>
+
