@@ -144,6 +144,7 @@ GEM
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.5.4)
     psych (5.1.2)
       stringio
     puma (6.4.2)
@@ -247,10 +248,11 @@ DEPENDENCIES
   devise
   importmap-rails
   jbuilder
+  pg
   puma (>= 5.0)
   rails (~> 7.1.2)
   sprockets-rails
-  sqlite3 (~> 1.4)
+  sqlite3
   stimulus-rails
   tailwindcss-rails (~> 2.3)
   turbo-rails
