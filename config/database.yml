@@ -53,6 +53,6 @@ development:
 
 production:
   <<: *default
-  database: app_production
-  username: app
+  database: gadgetgage_db
+  username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV["APP_DATABASE_PASSWORD"] %>
