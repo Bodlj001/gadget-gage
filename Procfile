@@ -1,4 +1,4 @@
-release: rails db:create
-release: rails db:migrate
+release: db:create
+release: db:migrate
 web: bin/rails server -p ${PORT:-5000} -e $RAILS_ENV
 css: bin/rails tailwindcss:watch
