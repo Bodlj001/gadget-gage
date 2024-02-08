@@ -15,6 +15,8 @@ gem 'activerecord-postgresql-adapter'
 
 gem 'rails_12factor', group: :production
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 # gem 'rails_12factor', group: :production
 
 # Use the Puma web server [https://github.com/puma/puma]
